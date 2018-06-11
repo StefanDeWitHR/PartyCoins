@@ -1,0 +1,2 @@
+# PartyCoins
+PartyCoins application
