@@ -1,0 +1,12 @@
+c:\users\super\source\repos\PartyCoinAPI\PartyCoinAPI\bin\Debug\netcoreapp2.0\PartyCoinAPI.deps.json
+c:\users\super\source\repos\PartyCoinAPI\PartyCoinAPI\bin\Debug\netcoreapp2.0\PartyCoinAPI.runtimeconfig.json
+c:\users\super\source\repos\PartyCoinAPI\PartyCoinAPI\bin\Debug\netcoreapp2.0\PartyCoinAPI.runtimeconfig.dev.json
+c:\users\super\source\repos\PartyCoinAPI\PartyCoinAPI\bin\Debug\netcoreapp2.0\PartyCoinAPI.dll
+c:\users\super\source\repos\PartyCoinAPI\PartyCoinAPI\bin\Debug\netcoreapp2.0\PartyCoinAPI.pdb
+c:\users\super\source\repos\PartyCoinAPI\PartyCoinAPI\obj\Debug\netcoreapp2.0\PartyCoinAPI.csprojAssemblyReference.cache
+c:\users\super\source\repos\PartyCoinAPI\PartyCoinAPI\obj\Debug\netcoreapp2.0\PartyCoinAPI.csproj.CoreCompileInputs.cache
+c:\users\super\source\repos\PartyCoinAPI\PartyCoinAPI\obj\Debug\netcoreapp2.0\PartyCoinAPI.AssemblyInfoInputs.cache
+c:\users\super\source\repos\PartyCoinAPI\PartyCoinAPI\obj\Debug\netcoreapp2.0\PartyCoinAPI.AssemblyInfo.cs
+c:\users\super\source\repos\PartyCoinAPI\PartyCoinAPI\obj\Debug\netcoreapp2.0\PartyCoinAPI.dll
+c:\users\super\source\repos\PartyCoinAPI\PartyCoinAPI\obj\Debug\netcoreapp2.0\PartyCoinAPI.pdb
+C:\Users\super\source\repos\PartyCoinAPI\PartyCoinAPI\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
