@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PartyCoinAPI.Data;
 using PartyCoinAPI.Models;
 
 namespace PartyCoinAPI.Controllers
 {
-
-    [Route("api/[controller]")]
+    [Authorize]
+    [Route("[controller]")]
     public class CompanyController : Controller
     {
         private readonly ApplicationDbContext _context;

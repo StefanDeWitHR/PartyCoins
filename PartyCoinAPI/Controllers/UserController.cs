@@ -9,8 +9,8 @@ using PartyCoinAPI.Models;
 
 namespace PartyCoinAPI.Controllers
 {
-  //  [Authorize]
-    [Route("api/[controller]")]
+    [Authorize]
+    [Route("[controller]")]
     public class UserController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -76,8 +76,8 @@ namespace PartyCoinAPI.Controllers
                 _context.SaveChanges();
             }
         }
-        [HttpPut("PostUser/{guid_user}")]
-        public void PostUser(Guid guid_user, [FromBody] ApplicationUser user)
+        [HttpPut("PutUser/{guid_user}")]
+        public void PutUser(Guid guid_user, [FromBody] ApplicationUser user)
         {
             if (guid_user == null || user == null)
             {
@@ -94,12 +94,8 @@ namespace PartyCoinAPI.Controllers
         {
             //
         }
-
-        //[HttpPost]
-        //public IActionResult Login()
-        //{
-        //    return Ok();
-        //}
+        /********************************************* Combine user & roles together**********************************/
+        
 
     }
 }

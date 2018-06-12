@@ -10,7 +10,7 @@ using PartyCoinAPI.Models;
 namespace PartyCoinAPI.Controllers
 {
     [Authorize(Roles = "Admin")]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     public class PartyController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -77,7 +77,7 @@ namespace PartyCoinAPI.Controllers
             }
         }
         [HttpPut("PutParty/{guid_party}")]
-        public void PutCompany(Guid guid_party, [FromBody] Party party)
+        public void PutParty(Guid guid_party, [FromBody] Party party)
         {
             if (guid_party == null || party == null)
             {

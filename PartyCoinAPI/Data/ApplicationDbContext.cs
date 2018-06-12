@@ -10,9 +10,16 @@ namespace PartyCoinAPI.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public DbSet<Company> Companies { get; set; }
-        public DbSet<Party> Partys { get; set; }
-        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+        public DbSet<Company> Companies { get; set; } // Companies
+        public DbSet<Party> Partys { get; set; } // Partys
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; } // Users
+        public DbSet<UserRoles> AspNetRoles { get; set; } // Roles
+        public DbSet<PayMethod> PayMethods { get; set; }
+        public DbSet<Menu> Menus { get; set; }
+        public DbSet<Coin> Coins { get; set; }
+        public DbSet<Wallet> Wallets { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

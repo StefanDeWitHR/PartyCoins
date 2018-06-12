@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace PartyCoinAPI.Migrations
 {
-    public partial class users_authentication : Migration
+    public partial class applicationroles : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,8 +15,10 @@ namespace PartyCoinAPI.Migrations
                 {
                     Id = table.Column<string>(nullable: false),
                     ConcurrencyStamp = table.Column<string>(nullable: true),
+                    Discriminator = table.Column<string>(nullable: false),
                     Name = table.Column<string>(maxLength: 256, nullable: true),
-                    NormalizedName = table.Column<string>(maxLength: 256, nullable: true)
+                    NormalizedName = table.Column<string>(maxLength: 256, nullable: true),
+                    guid_cmp = table.Column<Guid>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -49,7 +51,6 @@ namespace PartyCoinAPI.Migrations
                     guid = table.Column<Guid>(nullable: false),
                     guid_company = table.Column<Guid>(nullable: false),
                     l_active = table.Column<int>(nullable: false),
-                    password = table.Column<string>(maxLength: 20, nullable: false),
                     user_level = table.Column<int>(nullable: false)
                 },
                 constraints: table =>

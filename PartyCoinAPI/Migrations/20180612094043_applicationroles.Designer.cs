@@ -5,14 +5,15 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
+using Microsoft.EntityFrameworkCore.ValueGeneration;
 using PartyCoinAPI.Data;
 using System;
 
 namespace PartyCoinAPI.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20180611162604_users_authentication")]
-    partial class users_authentication
+    [Migration("20180612094043_applicationroles")]
+    partial class applicationroles
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,6 +30,9 @@ namespace PartyCoinAPI.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired();
+
                     b.Property<string>("Name")
                         .HasMaxLength(256);
 
@@ -43,6 +47,8 @@ namespace PartyCoinAPI.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityRole");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -181,10 +187,6 @@ namespace PartyCoinAPI.Migrations
 
                     b.Property<int>("l_active");
 
-                    b.Property<string>("password")
-                        .IsRequired()
-                        .HasMaxLength(20);
-
                     b.Property<int>("user_level");
 
                     b.HasKey("Id");
@@ -280,6 +282,17 @@ namespace PartyCoinAPI.Migrations
                     b.HasKey("guid");
 
                     b.ToTable("Partys");
+                });
+
+            modelBuilder.Entity("PartyCoinAPI.Models.UserRoles", b =>
+                {
+                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityRole");
+
+                    b.Property<Guid>("guid_cmp");
+
+                    b.ToTable("UserRoles");
+
+                    b.HasDiscriminator().HasValue("UserRoles");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
