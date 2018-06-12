@@ -13447,11 +13447,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\super\\source\\repos\\PartyCoinAPI\\PartyCoinAPI\\PartyCoinAPI.csproj",
+      "projectUniqueName": "C:\\Users\\super\\OneDrive\\Documenten\\GitHub\\PartyCoins\\PartyCoinAPI\\PartyCoinAPI.csproj",
       "projectName": "PartyCoinAPI",
-      "projectPath": "C:\\Users\\super\\source\\repos\\PartyCoinAPI\\PartyCoinAPI\\PartyCoinAPI.csproj",
+      "projectPath": "C:\\Users\\super\\OneDrive\\Documenten\\GitHub\\PartyCoins\\PartyCoinAPI\\PartyCoinAPI.csproj",
       "packagesPath": "C:\\Users\\super\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\super\\source\\repos\\PartyCoinAPI\\PartyCoinAPI\\obj\\",
+      "outputPath": "C:\\Users\\super\\OneDrive\\Documenten\\GitHub\\PartyCoins\\PartyCoinAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

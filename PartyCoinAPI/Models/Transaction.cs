@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,6 +8,7 @@ namespace PartyCoinAPI.Models
 {
     public class Transaction
     {
+        [Key]
         public Guid guid { get; set; }
         public Guid guid_company { get; set; }
         public Guid guid_wallet { get; set; }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -7,6 +8,7 @@ namespace PartyCoinAPI.Models
 {
     public class Wallet
     {
+        [Key]
         public Guid guid { get; set; }
         public Guid guid_user { get; set; }
         public Guid guid_party { get; set; } // One wallet for each party
