@@ -9,24 +9,24 @@ namespace PartyCoinAPI.Models
     public class Party
     {
         [Key]
-        public Guid guid { get; set; }
-        public Guid guid_company { get; set; }
-        public DateTime dt_party { get; set; }
-        public string name { get; set; }
-        public string adres { get; set; }
-        public string zip_code { get; set; }
-        public string website { get; set; }
-        public string coord_x { get; set; }
-        public string coord_y { get; set; }
-        public string logo { get; set; }
-        public float price { get; set; }
-        public string desc { get; set; }
-        public string long_desc { get; set; }
-        public string line_up { get; set; }        
-        public int age_required { get; set; }
-        public int status { get; set; }
-        public int l_active { get; set; }
-        public DateTime dt_created { get; set; }
-        public DateTime dt_modified { get; set; }
+        public string Id { get; set; }
+        public string CmpId { get; set; }
+        public string StatusId { get; set; }
+        public DateTime DtParty { get; set; }
+        public string Name { get; set; }
+        public string Adres { get; set; }
+        public string ZipCode { get; set; }
+        public string Website { get; set; }
+        public string CoordX { get; set; }
+        public string CoordY { get; set; }
+        public string Logo { get; set; }
+        public float Price { get; set; }
+        public string Description { get; set; }
+        public string LongDescription { get; set; }
+        public string LineUp { get; set; }        
+        public int AgeRequired { get; set; }       
+        public int LActive { get; set; }
+        public DateTime DtCreated { get; set; }
+        public DateTime DtModified { get; set; }
     }
 }

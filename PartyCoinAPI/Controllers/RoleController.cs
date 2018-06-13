@@ -18,79 +18,41 @@ namespace PartyCoinAPI.Controllers
         {
             _context = context;
         }
-
-
-        // CRUD 
         [HttpGet("GetRoles")]
         public ActionResult GetRoles()
         {
-            List<UserRoles> user_roles = _context.AspNetRoles.ToList();
-            if (user_roles.Count > 0)
-            {
-                throw new Exception("List contains 0 elements");
-
-            }
-            return Ok(user_roles);
+            List<UserRoles> UserRoleList = _context.AspNetRoles.ToList();
+            return Ok(UserRoleList);
         }
-        [HttpGet("GetRole/{Id}")]
-        public ActionResult GetRole(string Id)
+        [HttpGet("GetRole/{UserRoleId}")]
+        public ActionResult GetRole(string UserRoleId)
         {
-            UserRoles role = _context.AspNetRoles.Where(g => g.Id == Id).First();
-            if (role == null)
-            {
-                throw new System.ArgumentException("Role not found " + Id);
-            }
-            else
-            {
-                return Ok(role);
-            }
+           UserRoles UserRoleRec = _context.AspNetRoles.Where(g => g.Id == UserRoleId).First();
+           return Ok(UserRoleRec); 
         }
         [HttpPost("PostRole")]
-        public void PostRole([FromBody] UserRoles userRole)
+        public void PostRole([FromBody] UserRoles UserRoleRec)
         {
-            if (userRole == null)
-            {
-                throw new Exception("User is empty or null try again");
-            }
-            else
-            {
-
-                _context.AspNetRoles.Add(userRole);
-                _context.SaveChanges();
-            }
+            _context.AspNetRoles.Add(UserRoleRec);
+            _context.SaveChanges();
         }
         [HttpPost("PostRoles")]
-        public void PostRoles([FromBody] List<UserRoles> userRoles)
+        public void PostRoles([FromBody] List<UserRoles> UserRoleList)
         {
-            if (userRoles == null)
+            foreach (UserRoles UserRoleRec in UserRoleList)
             {
-                throw new Exception("UserRole is empty or null try again");
+                _context.AspNetRoles.Add(UserRoleRec);
             }
-            else
-            {
-                foreach (UserRoles usrRole in userRoles)
-                {
-                    _context.AspNetRoles.Add(usrRole);
-                }
-
-                _context.SaveChanges();
-            }
+            _context.SaveChanges();
         }
-        [HttpPut("PutRole/{Id}")]
-        public void PutRole(string Id, [FromBody] UserRoles UsrRole)
+        [HttpPut("PutRole/{UserRoleId}")]
+        public void PutRole(string UserRoleId, [FromBody] UserRoles UserRoleRec)
         {
-            if (Id == null || UsrRole == null)
-            {
-                throw new Exception("Wrong guid or user record");
-            }
-            else
-            {
-                _context.AspNetRoles.Update(UsrRole);
-                _context.SaveChanges();
-            }
+            _context.AspNetRoles.Update(UserRoleRec);
+            _context.SaveChanges();
         }
-        [HttpDelete("DeleteRole/{Id}")]
-        public void DeleteRole(string Id)
+        [HttpDelete("DeleteRole/{UserRoleId}")]
+        public void DeleteRole(string UserRoleId)
         {
             //
         }

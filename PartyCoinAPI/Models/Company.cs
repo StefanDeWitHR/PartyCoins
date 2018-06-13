@@ -9,18 +9,18 @@ namespace PartyCoinAPI.Models
     public class Company
     {
         [Key]
-        public Guid guid { get; set; }
-        public string name { get; set; }
-        public string phone { get; set; }
-        public string zipcode { get; set; }
-        public string website { get; set; }
-        public string adres { get; set; }
-        public string kvk_num { get; set; }
-        public string bank { get; set; }
-        public string curreny { get; set; }
-        public string country { get; set; }
-        public int l_active { get; set; }
-        public DateTime dt_created { get; set; }
-        public DateTime dt_modified { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Phone { get; set; }
+        public string Zipcode { get; set; }
+        public string Website { get; set; }
+        public string Adres { get; set; }
+        public string KvkNum { get; set; }
+        public string Bank { get; set; }
+        public string Curreny { get; set; }
+        public string Country { get; set; }
+        public int LActive { get; set; }
+        public DateTime DtCreated { get; set; }
+        public DateTime DtModified { get; set; }
     }
 }

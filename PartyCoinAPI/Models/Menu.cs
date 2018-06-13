@@ -9,15 +9,15 @@ namespace PartyCoinAPI.Models
     public class Menu
     {
         [Key]
-        public Guid guid { get; set; }
-        public Guid guid_cmp { get; set; }
-        public Guid guid_party { get; set; }
-        public string description { get; set; }
-        public string ingredients { get; set; }
-        public float alchol_perc { get; set; }
-        public float amount_coins { get; set; }
-        public int l_active { get; set; }
-        public DateTime dt_created { get; set; }
-        public DateTime dt_modified { get; set; }
+        public string Id { get; set; }
+        public string CmpId { get; set; }
+        public string PartyId { get; set; }
+        public string Description { get; set; }
+        public string Ingredients { get; set; }
+        public float AlcholPerc { get; set; }
+        public float Qty { get; set; }
+        public int LActive { get; set; }
+        public DateTime DtCreated { get; set; }
+        public DateTime DtModified { get; set; }
     }
 }

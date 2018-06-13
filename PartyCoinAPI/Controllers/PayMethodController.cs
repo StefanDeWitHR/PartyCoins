@@ -17,79 +17,42 @@ namespace PartyCoinAPI.Controllers
         {
             _context = context;
         }
-
-
-        // CRUD 
         [HttpGet("GetPaymentMethods")]
         public ActionResult GetPaymentMethods()
         {
-            List<PayMethod> payMethods = _context.PayMethods.ToList();
-            if (payMethods.Count > 0)
-            {
-                throw new Exception("List contains 0 elements");
-
-            }
-            return Ok(payMethods);
+            List<PayMethod> PayMethodList = _context.PayMethods.ToList();
+            return Ok(PayMethodList);
         }
-        [HttpGet("GetPayMethod/{guid_paymethod}")]
-        public ActionResult GetPayMethod(Guid guid_paymethod)
+        [HttpGet("GetPayMethod/{PayMethodId}")]
+        public ActionResult GetPayMethod(string PayMethodId)
         {
-            PayMethod payMethod = _context.PayMethods.Where(p => p.guid == guid_paymethod).First();
-            if (payMethod == null)
-            {
-                throw new System.ArgumentException("Payment method not found " + guid_paymethod);
-            }
-            else
-            {
-                return Ok(payMethod);
-            }
+            PayMethod PayMethodRec = _context.PayMethods.Where(p => p.Id == PayMethodId).First();
+            return Ok(PayMethodRec);
+            
         }
         [HttpPost("PostPaymentMethod")]
-        public void PostPaymentMethod([FromBody] PayMethod payMethod)
+        public void PostPaymentMethod([FromBody] PayMethod PayMethodRec)
         {
-            if (payMethod == null)
-            {
-                throw new Exception("Paymethod is empty or null try again");
-            }
-            else
-            {
-
-                _context.PayMethods.Add(payMethod);
-                _context.SaveChanges();
-            }
+            _context.PayMethods.Add(PayMethodRec);
+            _context.SaveChanges();
         }
         [HttpPost("PostPaymentMethods")]
-        public void PostPaymentMethods([FromBody] List<PayMethod> payMethods)
+        public void PostPaymentMethods([FromBody] List<PayMethod> PayMethodList)
         {
-            if (payMethods == null)
+            foreach (PayMethod PayMethodRec in PayMethodList)
             {
-                throw new Exception("PayMethod is empty or null try again");
+                _context.PayMethods.Add(PayMethodRec);
             }
-            else
-            {
-                foreach (PayMethod payMethod in payMethods)
-                {
-                    _context.PayMethods.Add(payMethod);
-                }
-
-                _context.SaveChanges();
-            }
+            _context.SaveChanges();
         }
-        [HttpPut("PutPaymentMethod/{guid_paymethod}")]
-        public void PutPaymentMethod(Guid guid_paymethod, [FromBody] PayMethod payMethod)
-        {
-            if (payMethod == null || guid_paymethod == null)
-            {
-                throw new Exception("Wrong guid or paymentmethod record");
-            }
-            else
-            {
-                _context.PayMethods.Update(payMethod);
-                _context.SaveChanges();
-            }
+        [HttpPut("PutPaymentMethod/{PayMethodId}")]
+        public void PutPaymentMethod(string PayMethodId, [FromBody] PayMethod PayMethodRec)
+        { 
+            _context.PayMethods.Update(PayMethodRec);
+            _context.SaveChanges();
         }
-        [HttpDelete("DeletePaymentMethod/{guid_paymethod}")]
-        public void DeletePaymentMethod(Guid guid_paymethod)
+        [HttpDelete("DeletePaymentMethod/{PayMethodId}")]
+        public void DeletePaymentMethod(string PayMethodId)
         {
             //
         }

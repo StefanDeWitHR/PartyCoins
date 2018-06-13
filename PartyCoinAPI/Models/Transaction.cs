@@ -9,15 +9,15 @@ namespace PartyCoinAPI.Models
     public class Transaction
     {
         [Key]
-        public Guid guid { get; set; }
-        public Guid guid_company { get; set; }
-        public Guid guid_wallet { get; set; }
-        public Guid guid_party { get; set; }
-        public Guid guid_user { get; set; }
-        public Guid guid_paymethod { get; set; }
-        public float qty_coins { get; set; }      
-        public int status { get; set; }
-        public DateTime dt_created { get; set; }
-        public DateTime dt_modified { get; set; }
+        public string Id { get; set; }
+        public string CmpId { get; set; }
+        public string WalletId { get; set; }
+        public string PartyId { get; set; }
+        public string UserId { get; set; }
+        public string PaymethodId { get; set; }
+        public float Qty { get; set; }
+        public int LActive { get; set; }
+        public DateTime DtCreated { get; set; }
+        public DateTime DtModified { get; set; }
     }
 }

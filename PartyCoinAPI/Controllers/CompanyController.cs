@@ -24,74 +24,39 @@ namespace PartyCoinAPI.Controllers
         [HttpGet("GetCompanies")]
         public ActionResult GetCompanies()
         {
-            List<Company> cmp_list = _context.Companies.ToList();
-            if (cmp_list.Count > 0)
-            {
-                throw new Exception("List contains 0 elements");
-
-            }
-            return Ok(cmp_list);
+            List<Company> CmpList = _context.Companies.ToList();
+            return Ok(CmpList);
         }
-        [HttpGet("GetCompany/{guid_cmp}")]
-        public ActionResult GetCompany(Guid guid_cmp)
+        [HttpGet("GetCompany/{CmpId}")]
+        public ActionResult GetCompany(string CmpId)
         {
-            Company cmp = _context.Companies.Where(g => g.guid == guid_cmp).First();
-            if (cmp == null)
-            {
-                throw new System.ArgumentException("Company not found ");
-            }
-            else
-            {
-                return Ok(cmp);
-            }
+            Company CmpRec = _context.Companies.Where(g => g.Id == CmpId).First();
+            return Ok(CmpRec);
         }
         [HttpPost("PostCompany")]
-        public void PostCompany([FromBody] Company cmp)
+        public void PostCompany([FromBody] Company CmpRec)
         {
-            if (cmp == null)
-            {
-                throw new Exception("Company is empty or null try again");
-            }
-            else
-            {
-
-                _context.Companies.Add(cmp);
-                _context.SaveChanges();
-            }
+           _context.Companies.Add(CmpRec);
+            _context.SaveChanges();           
         }
         [HttpPost("PostCompanies")]
-        public void PostCompanies([FromBody] List<Company> cmp)
+        public void PostCompanies([FromBody] List<Company> CmpList)
         {
-            if (cmp == null)
+            foreach (Company CmpRec in CmpList)
             {
-                throw new Exception("Company is empty or null try again");
+                _context.Companies.Add(CmpRec);
             }
-            else
-            {
-                foreach(Company c in cmp)
-                {
-                    _context.Companies.Add(c);
-                }
-                
-                _context.SaveChanges();
-            }
+            _context.SaveChanges();
         }
-        [HttpPut("PutCompany/{guid_cmp}")]
-        public void PutCompany(Guid guid_cmp, [FromBody] Company cmp)
+        [HttpPut("PutCompany/{CmpId}")]
+        public void PutCompany(string CmpId, [FromBody] Company CmpRec)
         {
-            if (guid_cmp == null || cmp == null)
-            {
-                throw new Exception("Wrong guid or cmp records");
-            }
-            else
-            {
-                _context.Companies.Update(cmp);
-                _context.SaveChanges();
-            }
+            _context.Companies.Update(CmpRec);
+            _context.SaveChanges();
         }
       
-        [HttpDelete("DeleteCompany/{guid_cmp}")]
-        public void DeleteCompany(Guid guid_cmp)
+        [HttpDelete("DeleteCompany/{CmpId}")]
+        public void DeleteCompany(string CmpId)
         {
         }
     }

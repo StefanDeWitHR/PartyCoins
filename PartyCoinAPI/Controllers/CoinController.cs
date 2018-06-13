@@ -18,79 +18,45 @@ namespace PartyCoinAPI.Controllers
         {
             _context = context;
         }
-
-
         // CRUD 
         [HttpGet("GetCoins")]
         public ActionResult GetCoins()
         {
-            List<Coin> coins_list = _context.Coins.ToList();
-            if (coins_list.Count > 0)
-            {
-                throw new Exception("List contains 0 elements");
-
-            }
-            return Ok(coins_list);
+            List<Coin> CoinList = _context.Coins.ToList();
+            return Ok(CoinList);
         }
-        [HttpGet("GetCoin/{guid_coin}")]
-        public ActionResult GetCoin(Guid guid_coin)
+        [HttpGet("GetCoin/{CoinId}")]
+        public ActionResult GetCoin(string CoinId)
         {
-            Coin coin = _context.Coins.Where(c => c.guid == guid_coin).First();
-            if (coin == null)
-            {
-                throw new System.ArgumentException("Coin not found " + coin);
-            }
-            else
-            {
-                return Ok(coin);
-            }
+            Coin CoinRec = _context.Coins.Where(c => c.Id == CoinId).First();
+            return Ok(CoinRec);
+            
         }
         [HttpPost("PostCoin")]
-        public void PostCoin([FromBody] Coin coin)
+        public void PostCoin([FromBody] Coin CoinRec)
         {
-            if (coin == null)
-            {
-                throw new Exception("Coin is empty or null try again");
-            }
-            else
-            {
-
-                _context.Coins.Add(coin);
-                _context.SaveChanges();
-            }
+           _context.Coins.Add(CoinRec);
+           _context.SaveChanges();
+            
         }
         [HttpPost("PostCoins")]
-        public void PostCoins([FromBody] List<Coin> coins)
+        public void PostCoins([FromBody] List<Coin> CoinList)
         {
-            if (coins == null)
+            foreach (Coin CoinRec in CoinList)
             {
-                throw new Exception("Coins is empty or null try again");
-            }
-            else
-            {
-                foreach (Coin coin in coins)
-                {
-                    _context.Coins.Add(coin);
-                }
+                _context.Coins.Add(CoinRec);
 
-                _context.SaveChanges();
             }
+            _context.SaveChanges();
         }
-        [HttpPut("PutCoin/{guid_coin}")]
-        public void PutCoin(Guid guid_coin, [FromBody] Coin coin)
+        [HttpPut("PutCoin/{CoinId}")]
+        public void PutCoin(string CoinId, [FromBody] Coin CoinRec)
         {
-            if (coin == null || guid_coin == null)
-            {
-                throw new Exception("Wrong guid or coin record");
-            }
-            else
-            {
-                _context.Coins.Update(coin);
-                _context.SaveChanges();
-            }
+           _context.Coins.Update(CoinRec);
+           _context.SaveChanges();
         }
-        [HttpDelete("DeleteCoin/{guid_coin}")]
-        public void DeleteCoin(Guid guid_coin)
+        [HttpDelete("DeleteCoin/{CoinId}")]
+        public void DeleteCoin(string CoinId)
         {
             //
         }

@@ -19,79 +19,42 @@ namespace PartyCoinAPI.Controllers
             _context = context;
         }
 
-
-
         [HttpGet("GetPartys")]
         public ActionResult GetPartys()
         {
-            List<Party> party_list = _context.Partys.ToList();
-            if (party_list.Count > 0)
-            {
-                throw new Exception("List contains 0 elements");
-
-            }
-            return Ok(party_list);
+            List<Party> PartyList = _context.Partys.ToList();
+            return Ok(PartyList);
         }
-        [HttpGet("GetParty/{guid_party}")]
-        public ActionResult GetParty(Guid guid_party)
+        [HttpGet("GetParty/{PartyId}")]
+        public ActionResult GetParty(string PartyId)
         {
-            Party party = _context.Partys.Where(g => g.guid == guid_party).First();
-            if (party == null)
-            {
-                throw new System.ArgumentException("Company not found ");
-            }
-            else
-            {
-                return Ok(party);
-            }
+            Party PartyRec = _context.Partys.Where(g => g.Id == PartyId).First();
+            return Ok(PartyRec);        
         }
         [HttpPost("PostParty")]
-        public void PostParty([FromBody] Party party)
+        public void PostParty([FromBody] Party PartyRec)
         {
-            if (party == null)
-            {
-                throw new Exception("Party is empty or null try again");
-            }
-            else
-            {
-
-                _context.Partys.Add(party);
-                _context.SaveChanges();
-            }
+            _context.Partys.Add(PartyRec);
+            _context.SaveChanges();
         }
         [HttpPost("PostPartys")]
-        public void PostPartys([FromBody] List<Party> party)
+        public void PostPartys([FromBody] List<Party> PartyList)
         {
-            if (party == null)
+            foreach (Party PartyRec in PartyList)
             {
-                throw new Exception("Party is empty or null try again");
+                _context.Partys.Add(PartyRec);
             }
-            else
-            {
-                foreach (Party p in party)
-                {
-                    _context.Partys.Add(p);
-                }
-
-                _context.SaveChanges();
-            }
+            _context.SaveChanges();
         }
-        [HttpPut("PutParty/{guid_party}")]
-        public void PutParty(Guid guid_party, [FromBody] Party party)
+        [HttpPut("PutParty/{PartyId}")]
+        public void PutParty(string PartyId, [FromBody] Party PartyRec)
         {
-            if (guid_party == null || party == null)
-            {
-                throw new Exception("Wrong guid or party record");
-            }
-            else
-            {
-                _context.Partys.Update(party);
-                _context.SaveChanges();
-            }
+            _context.Partys.Update(PartyRec);
+            _context.SaveChanges();
         }
 
-        [HttpDelete("DeleteParty/{guid_party}")]
-        public void DeleteParty(Guid guid_party)
+        [HttpDelete("DeleteParty/{PartyId}")]
+        public void DeleteParty(string PartyId)
         {
            //
         }

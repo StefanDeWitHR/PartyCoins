@@ -9,13 +9,13 @@ namespace PartyCoinAPI.Models
     public class Wallet
     {
         [Key]
-        public Guid guid { get; set; }
-        public Guid guid_user { get; set; }
-        public Guid guid_party { get; set; } // One wallet for each party
-        public float qty_coins {get;set;}
-        public int l_active { get; set; }
-        public DateTime dt_created { get; set; }
-        public DateTime dt_modified { get; set; }
+        public string Id { get; set; }
+        public string UserId { get; set; }
+        public string PartyId { get; set; } // One wallet for each party
+        public float Qty {get;set;}
+        public int LActive { get; set; }
+        public DateTime DtCreated { get; set; }
+        public DateTime DtModified { get; set; }
 
     }
 }

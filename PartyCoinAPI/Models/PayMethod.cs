@@ -9,12 +9,12 @@ namespace PartyCoinAPI.Models
     public class PayMethod
     {
         [Key]
-        public Guid guid { get; set; }
-        public Guid guid_cmp { get; set;} // in case of special paymethod methods(Empty guid = valid for all companys)
-        public string provider { get; set; }
-        public DateTime dt_created { get; set; }
-        public DateTime dt_modified { get; set; }
-        public int l_active { get; set; }
+        public string Id { get; set; }
+        public string CmpId { get; set;} // in case of special paymethod methods(Empty guid = valid for all companys)
+        public string Provider { get; set; }
+        public int LActive { get; set; }
+        public DateTime DtCreated { get; set; }
+        public DateTime DtModified { get; set; }
 
     }
 }

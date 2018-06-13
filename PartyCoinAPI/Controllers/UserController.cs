@@ -24,73 +24,39 @@ namespace PartyCoinAPI.Controllers
         [HttpGet("GetUsers")]
         public ActionResult GetUsers()
         {
-            List<ApplicationUser> users_list = _context.ApplicationUsers.ToList();
-            if (users_list.Count > 0)
-            {
-                throw new Exception("List contains 0 elements");
-
-            }
-            return Ok(users_list);
+            List<ApplicationUser> UserList = _context.ApplicationUsers.ToList();
+            return Ok(UserList);
         }
-        [HttpGet("GetUser/{guid_user}")]
-        public ActionResult GetUser(Guid guid_user)
+        [HttpGet("GetUser/{UserId}")]
+        public ActionResult GetUser(string UserId)
         {
-            ApplicationUser user = _context.ApplicationUsers.Where(g => g.guid == guid_user).First();
-            if (user == null)
-            {
-                throw new System.ArgumentException("User not found " + guid_user);
-            }
-            else
-            {
-                return Ok(user);
-            }
+            ApplicationUser UserRec = _context.ApplicationUsers.Where(g => g.Id == UserId).First();
+            return Ok(UserRec);
+            
         }
         [HttpPost("PostUser")]
-        public void PostUser([FromBody] ApplicationUser user)
+        public void PostUser([FromBody] ApplicationUser UserRec)
         {
-            if (user == null)
-            {
-                throw new Exception("User is empty or null try again");
-            }
-            else
-            {
-
-                _context.Users.Add(user);
-                _context.SaveChanges();
-            }
+            _context.Users.Add(UserRec);
+            _context.SaveChanges();
         }
         [HttpPost("PostUsers")]
-        public void PostPartys([FromBody] List<ApplicationUser> users)
+        public void PostPartys([FromBody] List<ApplicationUser> UserList)
         {
-            if (users == null)
+            foreach (ApplicationUser UserRec in UserList)
             {
-                throw new Exception("User is empty or null try again");
+                _context.Users.Add(UserRec);
             }
-            else
-            {
-                foreach (ApplicationUser u in users)
-                {
-                    _context.Users.Add(u);
-                }
-
-                _context.SaveChanges();
-            }
+            _context.SaveChanges();
         }
-        [HttpPut("PutUser/{guid_user}")]
-        public void PutUser(Guid guid_user, [FromBody] ApplicationUser user)
+        [HttpPut("PutUser/{UserId}")]
+        public void PutUser(string UserId, [FromBody] ApplicationUser UserRec)
         {
-            if (guid_user == null || user == null)
-            {
-                throw new Exception("Wrong guid or user record");
-            }
-            else
-            {
-                _context.Users.Update(user);
-                _context.SaveChanges();
-            }
+            _context.Users.Update(UserRec);
+            _context.SaveChanges();
         }
-        [HttpDelete("DeleteUser/{guid_user}")]
-        public void DeleteUser(Guid guid_user)
+        [HttpDelete("DeleteUser/{UserId}")]
+        public void DeleteUser(string UserId)
         {
             //
         }

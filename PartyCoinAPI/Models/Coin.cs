@@ -9,15 +9,15 @@ namespace PartyCoinAPI.Models
     public class Coin
     {
         [Key]
-        public Guid guid { get; set; }
-        public Guid guid_cmp { get; set; }
-        public Guid guid_party { get; set; }
-        public int age_required { get; set; }
-        public string logo { get; set; }
-        public float price { get; set; }
-        public int l_show { get; set; }
-        public DateTime dt_created { get; set; }
-        public DateTime dt_modified { get; set; }
+        public string Id { get; set; }
+        public string CmpId { get; set; }
+        public string PartyId { get; set; }
+        public int AgeRequired { get; set; }
+        public string Logo { get; set; }
+        public float Price { get; set; }
+        public int LActive { get; set; }
+        public DateTime DtCreated { get; set; }
+        public DateTime DtModified { get; set; }
 
     }
 }

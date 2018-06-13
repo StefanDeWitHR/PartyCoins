@@ -17,119 +17,62 @@ namespace PartyCoinAPI.Controllers
         public TransactionController(ApplicationDbContext context)
         {
             _context = context;
-        }
-
-
-        // CRUD 
+        } 
         [HttpGet("GetTransactions")]
         public ActionResult GetTransactions()
         {
-            List<Transaction> trans_list = _context.Transactions.ToList();
-            if (trans_list.Count > 0)
-            {
-                throw new Exception("List contains 0 elements");
-
-            }
-            return Ok(trans_list);
+            List<Transaction> TransactionList = _context.Transactions.ToList();
+            return Ok(TransactionList);
         }
-        [HttpGet("GetTransaction/{guid_transaction}")]
-        public ActionResult GetTransaction(Guid guid_transaction)
+        [HttpGet("GetTransaction/{TransactionId}")]
+        public ActionResult GetTransaction(string TransactionId)
         {
-            Transaction trans = _context.Transactions.Where(t => t.guid == guid_transaction).First();
-            if (trans == null)
-            {
-                throw new System.ArgumentException("Transaction not found " + trans);
-            }
-            else
-            {
-                return Ok(trans);
-            }
+            Transaction TransactionRec = _context.Transactions.Where(t => t.Id == TransactionId).First();
+            return Ok(TransactionRec);      
         }
-        [HttpGet("GetTransactionsByCompany/{guid_company}")]
-        public ActionResult GetTransactionsByCompany(Guid guid_company)
+        [HttpGet("GetTransactionsByCompany/{CmpId}")]
+        public ActionResult GetTransactionsByCompany(string CmpId)
         {
-            List<Transaction> trans = _context.Transactions.Where(t => t.guid_company == guid_company).ToList();
-            if (trans == null)
-            {
-                throw new System.ArgumentException("Transactions not found " + trans);
-            }
-            else
-            {
-                return Ok(trans);
-            }
+            List<Transaction> TransactionList = _context.Transactions.Where(t => t.Id == CmpId).ToList();
+            return Ok(TransactionList);
+            
         }
-        [HttpGet("GetTransactionsByParty/{guid_party}")]
-        public ActionResult GetTransactionsByParty(Guid guid_party)
+        [HttpGet("GetTransactionsByParty/{PartyId}")]
+        public ActionResult GetTransactionsByParty(string PartyId)
         {
-            List<Transaction> trans = _context.Transactions.Where(t => t.guid_party == guid_party).ToList();
-            if (trans == null)
-            {
-                throw new System.ArgumentException("Transactions not found " + trans);
-            }
-            else
-            {
-                return Ok(trans);
-            }
+            List<Transaction> TransactionList = _context.Transactions.Where(t => t.PartyId == PartyId).ToList();
+            return Ok(TransactionList);
         }
-        [HttpGet("GetTransactionsByPartyAndPayMethod/{guid_party}/{guid_paymethod}")]
-        public ActionResult GetTransactionsByPartyAndPayMethod(Guid guid_party , Guid guid_paymethod)
+        [HttpGet("GetTransactionsByPartyAndPayMethod/{PartyId}/{PayMethodId}")]
+        public ActionResult GetTransactionsByPartyAndPayMethod(string PartyId, string PayMethodId)
         {
-            List<Transaction> trans = _context.Transactions.Where(t => t.guid_party == guid_party && t.guid_paymethod == guid_paymethod).ToList();
-            if (trans == null)
-            {
-                throw new System.ArgumentException("Transactions not found " + trans);
-            }
-            else
-            {
-                return Ok(trans);
-            }
+            List<Transaction> TransactionList = _context.Transactions.Where(t => t.PartyId == PartyId && t.PaymethodId == PayMethodId).ToList();
+            return Ok(TransactionList);
         }
         [HttpPost("PostTransaction")]
-        public void PostTransaction([FromBody] Transaction trans)
+        public void PostTransaction([FromBody] Transaction TransactionRec)
         {
-            if (trans == null)
-            {
-                throw new Exception("Transaction is empty or null try again");
-            }
-            else
-            {
-
-                _context.Transactions.Add(trans);
-                _context.SaveChanges();
-            }
+            _context.Transactions.Add(TransactionRec);
+            _context.SaveChanges();
         }
         [HttpPost("PostTransactions")]
-        public void PostTransactions([FromBody] List<Transaction> trans)
+        public void PostTransactions([FromBody] List<Transaction> TransactionList)
         {
-            if (trans == null)
+            foreach (Transaction TransactionRec in TransactionList)
             {
-                throw new Exception("Transactions are empty or null try again");
+                _context.Transactions.Add(TransactionRec);
             }
-            else
-            {
-                foreach (Transaction tr in trans)
-                {
-                    _context.Transactions.Add(tr);
-                }
 
-                _context.SaveChanges();
-            }
+            _context.SaveChanges();
         }
-        [HttpPut("PutTransaction/{guid_transaction}")]
-        public void PutTransaction(Guid guid_transaction, [FromBody] Transaction trans)
+        [HttpPut("PutTransaction/{TransactionId}")]
+        public void PutTransaction(string TransactionId, [FromBody] Transaction TransactionRec)
         {
-            if (guid_transaction == null || trans == null)
-            {
-                throw new Exception("Wrong guid or transaction record");
-            }
-            else
-            {
-                _context.Transactions.Update(trans);
-                _context.SaveChanges();
-            }
+            _context.Transactions.Update(TransactionRec);
+            _context.SaveChanges();
         }
-        [HttpDelete("DelteTransaction/{guid_transaction}")]
-        public void DelteTransaction(Guid guid_transaction)
+        [HttpDelete("DelteTransaction/{TransactionId}")]
+        public void DelteTransaction(string TransactionId)
         {
             //
         }

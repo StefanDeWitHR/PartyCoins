@@ -18,79 +18,41 @@ namespace PartyCoinAPI.Controllers
         {
             _context = context;
         }
-
-
-        // CRUD 
         [HttpGet("GetMenus")]
         public ActionResult GetMenus()
         {
-            List<Menu> menus = _context.Menus.ToList();
-            if (menus.Count > 0)
-            {
-                throw new Exception("List contains 0 elements");
-
-            }
-            return Ok(menus);
+            List<Menu> MenuList = _context.Menus.ToList(); 
+            return Ok(MenuList);
         }
-        [HttpGet("GetMenu/{guid_menu}")]
-        public ActionResult GetMenu(Guid guid_menu)
+        [HttpGet("GetMenu/{MenuId}")]
+        public ActionResult GetMenu(string MenuId)
         {
-            Menu menu = _context.Menus.Where(m => m.guid== guid_menu).First();
-            if (menu == null)
-            {
-                throw new System.ArgumentException("Menu not found " + guid_menu);
-            }
-            else
-            {
-                return Ok(menu);
-            }
+            Menu MenuRec = _context.Menus.Where(m => m.Id== MenuId).First();
+            return Ok(MenuRec);
         }
         [HttpPost("PostMenu")]
-        public void PostMenu([FromBody] Menu menu)
+        public void PostMenu([FromBody] Menu MenuRec)
         {
-            if (menu == null)
-            {
-                throw new Exception("Menu is empty or null try again");
-            }
-            else
-            {
-
-                _context.Menus.Add(menu);
-                _context.SaveChanges();
-            }
+            _context.Menus.Add(MenuRec);
+            _context.SaveChanges();
         }
         [HttpPost("PostMenus")]
-        public void PostMenus([FromBody] List<Menu> menus)
+        public void PostMenus([FromBody] List<Menu> MenuList)
         {
-            if (menus == null)
+            foreach (Menu MenuRec in MenuList)
             {
-                throw new Exception("Menus is empty or null try again");
+                _context.Menus.Add(MenuRec);
             }
-            else
-            {
-                foreach (Menu menu in menus)
-                {
-                    _context.Menus.Add(menu);
-                }
-
-                _context.SaveChanges();
-            }
+            _context.SaveChanges();
         }
-        [HttpPut("PutMenu/{guid_menu}")]
-        public void PutMenu(Guid guid_menu, [FromBody] Menu menu)
+        [HttpPut("PutMenu/{MenuId}")]
+        public void PutMenu(string MenuId, [FromBody] Menu MenuRec)
         {
-            if (menu == null || guid_menu == null)
-            {
-                throw new Exception("Wrong guid or menu record");
-            }
-            else
-            {
-                _context.Menus.Update(menu);
-                _context.SaveChanges();
-            }
+            _context.Menus.Update(MenuRec);
+            _context.SaveChanges();
         }
-        [HttpDelete("DeleteMenu/{guid_menu}")]
-        public void DeleteMenu(Guid guid_menu )
+        [HttpDelete("DeleteMenu/{MenuId}")]
+        public void DeleteMenu(string MenuId)
         {
             //
         }
