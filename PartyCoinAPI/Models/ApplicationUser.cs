@@ -10,20 +10,31 @@ namespace PartyCoinAPI.Models
     // Add profile data for application users by adding properties to the ApplicationUser class
     public class ApplicationUser : IdentityUser
     {
-        
-        [Key]
         [Required]
-        public Guid guid { get; set; }
+        public Guid CmpId { get; set; }
+
         [Required]
-        public Guid guid_company { get; set; }
+        [DataType(DataType.Date)]
+        [Display(Name = "Date of birth")]
+        public DateTime DtBirth { get; set; }
+
         [Required]
-        public DateTime dt_birth { get; set; }
+        public string UserRoleId { get; set; }
+
+        [DataType(DataType.DateTime)]
+        [Display(Name = "Date last login")]
+        public DateTime DtLastLogin { get; set; }
+
+        //Standard fields in model
         [Required]
-        public int user_level { get; set; }
-        public int l_active { get; set; }
-        public DateTime dt_lastlogin { get; set; }
+        [Display(Name = "Active")]
+        public int LActive { get; set; }       
         [Required]
-        public DateTime dt_created { get; set; }
-        public DateTime dt_modified { get; set; }
+        [DataType(DataType.DateTime)]
+        [Display(Name = "Date created")]
+        public DateTime DtCreated { get; set; }
+        [DataType(DataType.DateTime)]
+        [Display(Name = "Date modified")]
+        public DateTime DtModified { get; set; }
     }
 }

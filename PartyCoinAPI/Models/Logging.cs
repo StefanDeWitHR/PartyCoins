@@ -7,34 +7,19 @@ using System.Threading.Tasks;
 
 namespace PartyCoinAPI.Models
 {
-    public class Coin
+    public class Logging
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         [Required]
         public string Id { get; set; }
 
-        [Required]
-        public string CmpId { get; set; }
+        [Display(Name = "Type logging")]
+        public string Type { get; set; }
 
-        [Required]
-        public string PartyId { get; set; }
+        [Display(Name= "Error message")]
+        public string Message { get; set; }
 
-        [Required]
-        [Display(Name = "Age required")]
-        public int AgeRequired { get; set; }
-
-        [Display(Name = "Logo coin")]
-        public string Logo { get; set; }
-
-        [Display(Name = "Price")]
-        [Required]       
-        public float Price { get; set; }
-
-        //Standard fields in model
-        [Required]
-        [Display(Name = "Active")]
-        public int LActive { get; set; }
         [DataType(DataType.DateTime)]
         [Display(Name = "Date created")]
         public DateTime DtCreated { get; set; }
@@ -42,5 +27,14 @@ namespace PartyCoinAPI.Models
         [Display(Name = "Date modified")]
         public DateTime DtModified { get; set; }
 
+        
+        public void GenerateLoggingFileIfNotExist()
+        {
+
+        }
+        public void AddLoggingToFile(Logging LoggingRec)
+        {
+
+        }
     }
 }

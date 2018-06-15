@@ -1,0 +1,12 @@
+C:\Users\super\OneDrive\Documenten\GitHub\PartyCoins\PartyCoinAPI\bin\Release\netcoreapp2.0\PartyCoinAPI.deps.json
+C:\Users\super\OneDrive\Documenten\GitHub\PartyCoins\PartyCoinAPI\bin\Release\netcoreapp2.0\PartyCoinAPI.runtimeconfig.json
+C:\Users\super\OneDrive\Documenten\GitHub\PartyCoins\PartyCoinAPI\bin\Release\netcoreapp2.0\PartyCoinAPI.runtimeconfig.dev.json
+C:\Users\super\OneDrive\Documenten\GitHub\PartyCoins\PartyCoinAPI\bin\Release\netcoreapp2.0\PartyCoinAPI.dll
+C:\Users\super\OneDrive\Documenten\GitHub\PartyCoins\PartyCoinAPI\bin\Release\netcoreapp2.0\PartyCoinAPI.pdb
+C:\Users\super\OneDrive\Documenten\GitHub\PartyCoins\PartyCoinAPI\obj\Release\netcoreapp2.0\PartyCoinAPI.csprojAssemblyReference.cache
+C:\Users\super\OneDrive\Documenten\GitHub\PartyCoins\PartyCoinAPI\obj\Release\netcoreapp2.0\PartyCoinAPI.csproj.CoreCompileInputs.cache
+C:\Users\super\OneDrive\Documenten\GitHub\PartyCoins\PartyCoinAPI\obj\Release\netcoreapp2.0\PartyCoinAPI.AssemblyInfoInputs.cache
+C:\Users\super\OneDrive\Documenten\GitHub\PartyCoins\PartyCoinAPI\obj\Release\netcoreapp2.0\PartyCoinAPI.AssemblyInfo.cs
+C:\Users\super\OneDrive\Documenten\GitHub\PartyCoins\PartyCoinAPI\obj\Release\netcoreapp2.0\PartyCoinAPI.dll
+C:\Users\super\OneDrive\Documenten\GitHub\PartyCoins\PartyCoinAPI\obj\Release\netcoreapp2.0\PartyCoinAPI.pdb
+C:\Users\super\OneDrive\Documenten\GitHub\PartyCoins\PartyCoinAPI\obj\Release\netcoreapp2.0\UserSecretsAssemblyInfo.cs

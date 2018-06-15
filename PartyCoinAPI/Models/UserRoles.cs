@@ -9,6 +9,7 @@ namespace PartyCoinAPI.Models
     public class UserRoles : IdentityRole
     {
         
+        [Required]
         public string CmpId { get; set; } // Empty guid is a role for everyone
 
     }
