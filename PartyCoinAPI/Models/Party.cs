@@ -14,14 +14,13 @@ namespace PartyCoinAPI.Models
         [Required]
         public Guid Id { get; set; }
        
-
         [Required]
         public Guid CmpId { get; set; }
         
         public List<Menu> Menus { get; set; }
 
         [Required]
-        public Coin Coin { get; set; }
+        public Guid CoinId { get; set; }
 
         [Required]
         public Guid StatusId { get; set; }

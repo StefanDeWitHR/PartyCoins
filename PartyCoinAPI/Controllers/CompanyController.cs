@@ -33,17 +33,24 @@ namespace PartyCoinAPI.Controllers
         public ActionResult GetCompanies()
         {
             List<Company> CmpList = _context.Companies.ToList();
-            return Ok(CmpList);
+            var result = Mapper.Map<List<CompanyDTO>>(CmpList);
+            return Ok(result);
         }
         [HttpGet("GetCompany/{CmpId}")]
         public ActionResult GetCompany(Guid CmpId)
         { 
-
             Company CmpRec = _context.Companies.Where(g => g.Id == CmpId).First();
-            var TransferObject = Mapper.Map<CompanyDTO>(CmpRec);
-            
-            return Ok(TransferObject);
+            if (CmpRec == null)
+            {
+                return View("Error");
+            }
+            else
+            {
+                var result = Mapper.Map<CompanyDTO>(CmpRec);
+                return Ok(result);
+            }
         }
+           
         [HttpPost("PostCompany")]
         public ActionResult PostCompany([FromBody] CompanyDTO CmpRec)
         {
@@ -54,8 +61,8 @@ namespace PartyCoinAPI.Controllers
             }
             else
             {
-                var TransferObject = _mapper.Map<Company>(CmpRec);
-                _context.Companies.Add(TransferObject);
+                var result = _mapper.Map<Company>(CmpRec);
+                _context.Companies.Add(result);
                 _context.SaveChanges();
                 return Ok();
             }

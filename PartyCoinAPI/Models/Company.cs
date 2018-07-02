@@ -20,8 +20,6 @@ namespace PartyCoinAPI.Models
 
         public List<PayMethod> PayMethods { get; set; }
 
-
-
         [Display(Name = "Name")]
         [Required]
         public string Name { get; set; }
