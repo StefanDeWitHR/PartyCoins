@@ -22,7 +22,7 @@ namespace PartyCoinAPI.Models
         [Required]
         public Guid WalletId { get; set; }
 
-        [Required]
+     
         [DataType(DataType.Date)]
         [Display(Name = "Date of birth")]
         public DateTime DtBirth { get; set; }

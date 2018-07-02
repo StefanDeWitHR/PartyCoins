@@ -183,13 +183,16 @@ namespace PartyCoinAPI.Migrations
 
                     b.Property<bool>("TwoFactorEnabled");
 
+                    b.Property<Guid>("UserId")
+                        .ValueGeneratedOnAdd();
+
                     b.Property<string>("UserName")
                         .HasMaxLength(256);
 
                     b.Property<string>("UserRoleId")
                         .IsRequired();
 
-                    b.Property<int>("WalletId");
+                    b.Property<Guid>("WalletId");
 
                     b.HasKey("Id");
 
@@ -208,12 +211,10 @@ namespace PartyCoinAPI.Migrations
 
             modelBuilder.Entity("PartyCoinAPI.Models.Coin", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("AgeRequired");
-
-                    b.Property<Guid>("CmpId");
 
                     b.Property<DateTime>("DtCreated");
 
@@ -223,8 +224,7 @@ namespace PartyCoinAPI.Migrations
 
                     b.Property<string>("Logo");
 
-                    b.Property<string>("PartyId")
-                        .IsRequired();
+                    b.Property<Guid>("PartyId");
 
                     b.Property<float>("Price");
 
@@ -238,7 +238,7 @@ namespace PartyCoinAPI.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Addresss")
+                    b.Property<string>("address")
                         .IsRequired();
 
                     b.Property<string>("Bank");
@@ -282,10 +282,10 @@ namespace PartyCoinAPI.Migrations
 
             modelBuilder.Entity("PartyCoinAPI.Models.Currency", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("CoinId");
+                    b.Property<Guid?>("CoinId");
 
                     b.Property<Guid?>("CompanyId");
 
@@ -295,7 +295,7 @@ namespace PartyCoinAPI.Migrations
 
                     b.Property<int>("LActive");
 
-                    b.Property<string>("PartyId");
+                    b.Property<Guid?>("PartyId");
 
                     b.HasKey("Id");
 
@@ -310,7 +310,7 @@ namespace PartyCoinAPI.Migrations
 
             modelBuilder.Entity("PartyCoinAPI.Models.Menu", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<float>("AlcholPerc");
@@ -329,8 +329,7 @@ namespace PartyCoinAPI.Migrations
 
                     b.Property<int>("LActive");
 
-                    b.Property<string>("PartyId")
-                        .IsRequired();
+                    b.Property<Guid>("PartyId");
 
                     b.Property<float>("Qty");
 
@@ -343,7 +342,7 @@ namespace PartyCoinAPI.Migrations
 
             modelBuilder.Entity("PartyCoinAPI.Models.Party", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Address")
@@ -355,6 +354,8 @@ namespace PartyCoinAPI.Migrations
                         .IsRequired();
 
                     b.Property<Guid>("CmpId");
+
+                    b.Property<Guid>("CoinId");
 
                     b.Property<Guid?>("CompanyId");
 
@@ -392,8 +393,7 @@ namespace PartyCoinAPI.Migrations
 
                     b.Property<string>("Route");
 
-                    b.Property<string>("StatusId")
-                        .IsRequired();
+                    b.Property<Guid>("StatusId");
 
                     b.Property<string>("Website");
 
@@ -409,7 +409,7 @@ namespace PartyCoinAPI.Migrations
 
             modelBuilder.Entity("PartyCoinAPI.Models.PayMethod", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<Guid>("CmpId");
@@ -422,9 +422,7 @@ namespace PartyCoinAPI.Migrations
 
                     b.Property<int>("LActive");
 
-                    b.Property<int>("PartyId");
-
-                    b.Property<string>("PartyId1");
+                    b.Property<Guid>("PartyId");
 
                     b.Property<string>("Provider")
                         .IsRequired();
@@ -433,14 +431,14 @@ namespace PartyCoinAPI.Migrations
 
                     b.HasIndex("CompanyId");
 
-                    b.HasIndex("PartyId1");
+                    b.HasIndex("PartyId");
 
                     b.ToTable("PayMethods");
                 });
 
             modelBuilder.Entity("PartyCoinAPI.Models.Transaction", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<Guid>("CmpId");
@@ -451,19 +449,15 @@ namespace PartyCoinAPI.Migrations
 
                     b.Property<int>("LActive");
 
-                    b.Property<string>("PartyId")
-                        .IsRequired();
+                    b.Property<Guid>("PartyId");
 
-                    b.Property<string>("PaymethodId")
-                        .IsRequired();
+                    b.Property<Guid>("PaymethodId");
 
                     b.Property<float>("Qty");
 
-                    b.Property<string>("UserId")
-                        .IsRequired();
+                    b.Property<Guid>("UserId");
 
-                    b.Property<string>("WalletId")
-                        .IsRequired();
+                    b.Property<Guid>("WalletId");
 
                     b.HasKey("Id");
 
@@ -474,31 +468,28 @@ namespace PartyCoinAPI.Migrations
 
             modelBuilder.Entity("PartyCoinAPI.Models.UserCoin", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("CoinId");
+                    b.Property<Guid>("CoinId");
 
                     b.Property<string>("Qty")
                         .IsRequired();
 
-                    b.Property<string>("UserId")
-                        .IsRequired();
+                    b.Property<Guid>("UserId");
 
-                    b.Property<int>("WalletId");
-
-                    b.Property<string>("WalletId1");
+                    b.Property<Guid>("WalletId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("WalletId1");
+                    b.HasIndex("WalletId");
 
                     b.ToTable("UserCoin");
                 });
 
             modelBuilder.Entity("PartyCoinAPI.Models.Wallet", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("DtCreated");
@@ -507,8 +498,7 @@ namespace PartyCoinAPI.Migrations
 
                     b.Property<int>("LActive");
 
-                    b.Property<string>("UserId")
-                        .IsRequired();
+                    b.Property<Guid>("UserId");
 
                     b.HasKey("Id");
 
@@ -521,7 +511,7 @@ namespace PartyCoinAPI.Migrations
 
                     b.Property<Guid>("CmpId");
 
-                    b.Property<int>("PartyId");
+                    b.Property<Guid>("PartyId");
 
                     b.ToTable("UserRole");
 
@@ -618,7 +608,8 @@ namespace PartyCoinAPI.Migrations
 
                     b.HasOne("PartyCoinAPI.Models.Party")
                         .WithMany("PayMethods")
-                        .HasForeignKey("PartyId1");
+                        .HasForeignKey("PartyId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("PartyCoinAPI.Models.Transaction", b =>
@@ -633,7 +624,8 @@ namespace PartyCoinAPI.Migrations
                 {
                     b.HasOne("PartyCoinAPI.Models.Wallet")
                         .WithMany("UserCoins")
-                        .HasForeignKey("WalletId1");
+                        .HasForeignKey("WalletId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
