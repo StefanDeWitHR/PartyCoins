@@ -12,22 +12,23 @@ namespace PartyCoinAPI.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         [Required]
-        public string Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
-        public string CmpId { get; set; }
+        public Guid CmpId { get; set; }
 
         [Required]
-        public string WalletId { get; set; }
+        public Guid WalletId { get; set; }
+
 
         [Required]
-        public string PartyId { get; set; }
+        public Guid PartyId { get; set; }
 
         [Required]
-        public string UserId { get; set; }
+        public Guid UserId { get; set; }
 
         [Required]
-        public string PaymethodId { get; set; }
+        public Guid PaymethodId { get; set; }
 
         [Display(Name = "Amount")]
         [Required]
@@ -43,5 +44,7 @@ namespace PartyCoinAPI.Models
         [DataType(DataType.DateTime)]
         [Display(Name = "Date modified")]
         public DateTime DtModified { get; set; }
+
+       
     }
 }

@@ -25,26 +25,26 @@ namespace PartyCoinAPI.Controllers
             return Ok(TransactionList);
         }
         [HttpGet("GetTransaction/{TransactionId}")]
-        public ActionResult GetTransaction(string TransactionId)
+        public ActionResult GetTransaction(Guid TransactionId)
         {
             Transaction TransactionRec = _context.Transactions.Where(t => t.Id == TransactionId).First();
             return Ok(TransactionRec);      
         }
         [HttpGet("GetTransactionsByCompany/{CmpId}")]
-        public ActionResult GetTransactionsByCompany(string CmpId)
+        public ActionResult GetTransactionsByCompany(Guid CmpId)
         {
             List<Transaction> TransactionList = _context.Transactions.Where(t => t.Id == CmpId).ToList();
             return Ok(TransactionList);
             
         }
         [HttpGet("GetTransactionsByParty/{PartyId}")]
-        public ActionResult GetTransactionsByParty(string PartyId)
+        public ActionResult GetTransactionsByParty(Guid PartyId)
         {
             List<Transaction> TransactionList = _context.Transactions.Where(t => t.PartyId == PartyId).ToList();
             return Ok(TransactionList);
         }
         [HttpGet("GetTransactionsByPartyAndPayMethod/{PartyId}/{PayMethodId}")]
-        public ActionResult GetTransactionsByPartyAndPayMethod(string PartyId, string PayMethodId)
+        public ActionResult GetTransactionsByPartyAndPayMethod(Guid PartyId, Guid PayMethodId)
         {
             List<Transaction> TransactionList = _context.Transactions.Where(t => t.PartyId == PartyId && t.PaymethodId == PayMethodId).ToList();
             return Ok(TransactionList);
@@ -66,13 +66,13 @@ namespace PartyCoinAPI.Controllers
             _context.SaveChanges();
         }
         [HttpPut("PutTransaction/{TransactionId}")]
-        public void PutTransaction(string TransactionId, [FromBody] Transaction TransactionRec)
+        public void PutTransaction(Guid TransactionId, [FromBody] Transaction TransactionRec)
         {
             _context.Transactions.Update(TransactionRec);
             _context.SaveChanges();
         }
         [HttpDelete("DelteTransaction/{TransactionId}")]
-        public void DelteTransaction(string TransactionId)
+        public void DelteTransaction(Guid TransactionId)
         {
             //
         }

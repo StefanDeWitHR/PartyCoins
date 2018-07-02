@@ -12,11 +12,23 @@ namespace PartyCoinAPI.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         [Required]
-        public string Id { get; set; }
+        public Guid Id { get; set; }
+       
+        public List<Party> Partys { get; set; }
+
+        public List<ApplicationUser> Users { get; set; }
+
+        public List<PayMethod> PayMethods { get; set; }
+
+
 
         [Display(Name = "Name")]
         [Required]
         public string Name { get; set; }
+
+        [Display(Name = "Email")]
+        [Required]
+        public string Email { get; set; }
 
         [Display(Name = "Phone")]
         [Required]
@@ -24,30 +36,37 @@ namespace PartyCoinAPI.Models
 
         [Display(Name = "Zip code")]
         [Required]
-        public string Zipcode { get; set; }
+        public string ZipCode { get; set; }
 
         [Display(Name = "Website")]
         public string Website { get; set; }
 
-        [Display(Name = "Adres")]
+        [Display(Name = "Address")]
         [Required]
-        public string Adres { get; set; }
+        public string Addresss { get; set; }
 
-        [Display(Name = "KVK number")]
+        [Display(Name= "City")]
         [Required]
-        public string KvkNum { get; set; }
-
-        [Display(Name = "Bank")]
-        [Required]
-        public string Bank { get; set; }
-
-        [Display(Name = "Currency")]
-        [Required]
-        public string Curreny { get; set; }
+        public string City { get; set; }
 
         [Display(Name = "Country")]
         [Required]
         public string Country { get; set; }
+        
+        [Display(Name = "KVK number")]
+        [Required]
+        public string KvkNum { get; set; }
+
+        [Display(Name ="VAT number")]
+        [Required]
+        public string VatNum { get; set; }
+
+        [Display(Name = "Bank")]
+        public string Bank { get; set; }
+
+        [Display(Name = "Currency")]
+        [Required]
+        public List<Currency> Currenys { get; set; }      
 
         //Standard fields in model
         [Required]

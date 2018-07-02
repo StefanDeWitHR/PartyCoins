@@ -1,0 +1,101 @@
+﻿@model IEnumerable<PartyCoinAPI.Models.Company>
+
+@{
+    ViewData["Title"] = "Manage Company";
+}
+
+<h2>Manage Company</h2>
+
+<p>
+    <a asp-action="Create" asp-controller="Company">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Phone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Zipcode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Website)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Adres)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.KvkNum)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Bank)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Curreny)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Country)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LActive)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DtCreated)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DtModified)
+                </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Zipcode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Website)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adres)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KvkNum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bank)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Curreny)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DtCreated)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DtModified)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

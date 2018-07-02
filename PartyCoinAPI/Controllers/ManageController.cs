@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using PartyCoinAPI.Data;
 using PartyCoinAPI.Models;
 using PartyCoinAPI.Models.ManageViewModels;
 using PartyCoinAPI.Services;
@@ -28,19 +29,20 @@ namespace PartyCoinAPI.Controllers
 
         private const string AuthenticatorUriFormat = "otpauth://totp/{0}:{1}?secret={2}&issuer={0}&digits=6";
         private const string RecoveryCodesKey = nameof(RecoveryCodesKey);
-
+        private readonly ApplicationDbContext _context;
         public ManageController(
           UserManager<ApplicationUser> userManager,
           SignInManager<ApplicationUser> signInManager,
           IEmailSender emailSender,
           ILogger<ManageController> logger,
-          UrlEncoder urlEncoder)
+          UrlEncoder urlEncoder , ApplicationDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
             _logger = logger;
             _urlEncoder = urlEncoder;
+            this._context = context;
         }
 
         [TempData]
@@ -146,6 +148,19 @@ namespace PartyCoinAPI.Controllers
             }
 
             var model = new ChangePasswordViewModel { StatusMessage = StatusMessage };
+            return View(model);
+        }
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> ManageCompany()
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+            }
+
+            var model = _context.Companies.Select(c => c); 
             return View(model);
         }
 

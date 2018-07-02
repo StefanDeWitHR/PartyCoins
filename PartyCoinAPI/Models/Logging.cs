@@ -12,7 +12,7 @@ namespace PartyCoinAPI.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         [Required]
-        public string Id { get; set; }
+        public string Guid { get; set; }
 
         [Display(Name = "Type logging")]
         public string Type { get; set; }

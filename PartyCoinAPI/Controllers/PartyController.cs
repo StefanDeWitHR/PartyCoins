@@ -26,7 +26,7 @@ namespace PartyCoinAPI.Controllers
             return Ok(PartyList);
         }
         [HttpGet("GetParty/{PartyId}")]
-        public ActionResult GetParty(string PartyId)
+        public ActionResult GetParty(Guid PartyId)
         {
             Party PartyRec = _context.Partys.Where(g => g.Id == PartyId).First();
             return Ok(PartyRec);        
@@ -47,14 +47,14 @@ namespace PartyCoinAPI.Controllers
             _context.SaveChanges();
         }
         [HttpPut("PutParty/{PartyId}")]
-        public void PutParty(string PartyId, [FromBody] Party PartyRec)
+        public void PutParty(Guid PartyId, [FromBody] Party PartyRec)
         {
             _context.Partys.Update(PartyRec);
             _context.SaveChanges();
         }
 
         [HttpDelete("DeleteParty/{PartyId}")]
-        public void DeleteParty(string PartyId)
+        public void DeleteParty(Guid PartyId)
         {
            //
         }

@@ -12,13 +12,19 @@ namespace PartyCoinAPI.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         [Required]
-        public string Id { get; set; }
+        public Guid Id { get; set; }
+       
 
         [Required]
-        public string CmpId { get; set; }
+        public Guid CmpId { get; set; }
+        
+        public List<Menu> Menus { get; set; }
 
         [Required]
-        public string StatusId { get; set; }
+        public Coin Coin { get; set; }
+
+        [Required]
+        public Guid StatusId { get; set; }
 
         [Display(Name = "Date of party")]
         [Required]
@@ -28,17 +34,23 @@ namespace PartyCoinAPI.Models
         [Required]
         public string Name { get; set; }
 
-        [Display(Name = "Adres")]
+        [Display(Name = "Address")]
         [Required]
-        public string Adres { get; set; }
+        public string Address { get; set; }
 
         [Display(Name = "Zip code")]
         [Required]
         public string ZipCode { get; set; }
 
+        [Display(Name= "City")]
+        [Required]
+        public string City { get; set; }
+
+        [Display(Name="Country")]
+        public string Country { get; set; }
+
         [Display(Name = "Website")]
         public string Website { get; set; }
-
        
         [Required]
         public string CoordX { get; set; }
@@ -54,9 +66,20 @@ namespace PartyCoinAPI.Models
         [Required]
         public float Price { get; set; }
 
+        [Display(Name="Currency")]
+        [Required]
+        public List<Currency> Currencyss { get; set; }
+
+        [Display(Name = "Pay Methods")]
+        public List<PayMethod> PayMethods { get; set; }
+
+
         [Display(Name = "Description")]
         [Required]
         public string Description { get; set; }
+
+        [Display(Name="Route")]
+        public string Route { get; set; }
 
         [Display(Name = "Long description")]
         public string LongDescription { get; set; }

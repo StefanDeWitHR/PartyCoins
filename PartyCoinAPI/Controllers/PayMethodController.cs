@@ -24,7 +24,7 @@ namespace PartyCoinAPI.Controllers
             return Ok(PayMethodList);
         }
         [HttpGet("GetPayMethod/{PayMethodId}")]
-        public ActionResult GetPayMethod(string PayMethodId)
+        public ActionResult GetPayMethod(Guid PayMethodId)
         {
             PayMethod PayMethodRec = _context.PayMethods.Where(p => p.Id == PayMethodId).First();
             return Ok(PayMethodRec);
@@ -46,13 +46,13 @@ namespace PartyCoinAPI.Controllers
             _context.SaveChanges();
         }
         [HttpPut("PutPaymentMethod/{PayMethodId}")]
-        public void PutPaymentMethod(string PayMethodId, [FromBody] PayMethod PayMethodRec)
+        public void PutPaymentMethod(Guid PayMethodId, [FromBody] PayMethod PayMethodRec)
         { 
             _context.PayMethods.Update(PayMethodRec);
             _context.SaveChanges();
         }
         [HttpDelete("DeletePaymentMethod/{PayMethodId}")]
-        public void DeletePaymentMethod(string PayMethodId)
+        public void DeletePaymentMethod(Guid PayMethodId)
         {
             //
         }

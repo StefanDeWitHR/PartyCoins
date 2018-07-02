@@ -141,13 +141,27 @@ namespace PartyCoinAPI.Migrations
 
                     b.Property<int>("AccessFailedCount");
 
+                    b.Property<Guid>("CmpId");
+
+                    b.Property<Guid?>("CompanyId");
+
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
+
+                    b.Property<DateTime>("DtBirth");
+
+                    b.Property<DateTime>("DtCreated");
+
+                    b.Property<DateTime>("DtLastLogin");
+
+                    b.Property<DateTime>("DtModified");
 
                     b.Property<string>("Email")
                         .HasMaxLength(256);
 
                     b.Property<bool>("EmailConfirmed");
+
+                    b.Property<int>("LActive");
 
                     b.Property<bool>("LockoutEnabled");
 
@@ -172,25 +186,14 @@ namespace PartyCoinAPI.Migrations
                     b.Property<string>("UserName")
                         .HasMaxLength(256);
 
-                    b.Property<DateTime>("dt_birth");
+                    b.Property<string>("UserRoleId")
+                        .IsRequired();
 
-                    b.Property<DateTime>("dt_created");
-
-                    b.Property<DateTime>("dt_lastlogin");
-
-                    b.Property<DateTime>("dt_modified");
-
-                    b.Property<Guid>("guid");
-
-                    b.Property<Guid>("guid_company");
-
-                    b.Property<int>("l_active");
-
-                    b.Property<int>("user_level");
+                    b.Property<int>("WalletId");
 
                     b.HasKey("Id");
 
-                    b.HasAlternateKey("guid");
+                    b.HasIndex("CompanyId");
 
                     b.HasIndex("NormalizedEmail")
                         .HasName("EmailIndex");
@@ -210,7 +213,7 @@ namespace PartyCoinAPI.Migrations
 
                     b.Property<int>("AgeRequired");
 
-                    b.Property<string>("CmpId");
+                    b.Property<Guid>("CmpId");
 
                     b.Property<DateTime>("DtCreated");
 
@@ -220,7 +223,8 @@ namespace PartyCoinAPI.Migrations
 
                     b.Property<string>("Logo");
 
-                    b.Property<string>("PartyId");
+                    b.Property<string>("PartyId")
+                        .IsRequired();
 
                     b.Property<float>("Price");
 
@@ -231,36 +235,77 @@ namespace PartyCoinAPI.Migrations
 
             modelBuilder.Entity("PartyCoinAPI.Models.Company", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Adres");
+                    b.Property<string>("Addresss")
+                        .IsRequired();
 
                     b.Property<string>("Bank");
 
-                    b.Property<string>("Country");
+                    b.Property<string>("City")
+                        .IsRequired();
 
-                    b.Property<string>("Curreny");
+                    b.Property<string>("Country")
+                        .IsRequired();
 
                     b.Property<DateTime>("DtCreated");
 
                     b.Property<DateTime>("DtModified");
 
-                    b.Property<string>("KvkNum");
+                    b.Property<string>("Email")
+                        .IsRequired();
+
+                    b.Property<string>("KvkNum")
+                        .IsRequired();
 
                     b.Property<int>("LActive");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
-                    b.Property<string>("Phone");
+                    b.Property<string>("Phone")
+                        .IsRequired();
+
+                    b.Property<string>("VatNum")
+                        .IsRequired();
 
                     b.Property<string>("Website");
 
-                    b.Property<string>("Zipcode");
+                    b.Property<string>("ZipCode")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
                     b.ToTable("Companies");
+                });
+
+            modelBuilder.Entity("PartyCoinAPI.Models.Currency", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("CoinId");
+
+                    b.Property<Guid?>("CompanyId");
+
+                    b.Property<DateTime>("DtCreated");
+
+                    b.Property<DateTime>("DtModified");
+
+                    b.Property<int>("LActive");
+
+                    b.Property<string>("PartyId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CoinId");
+
+                    b.HasIndex("CompanyId");
+
+                    b.HasIndex("PartyId");
+
+                    b.ToTable("Currency");
                 });
 
             modelBuilder.Entity("PartyCoinAPI.Models.Menu", b =>
@@ -270,23 +315,28 @@ namespace PartyCoinAPI.Migrations
 
                     b.Property<float>("AlcholPerc");
 
-                    b.Property<string>("CmpId");
+                    b.Property<Guid>("CmpId");
 
-                    b.Property<string>("Description");
+                    b.Property<string>("Description")
+                        .IsRequired();
 
                     b.Property<DateTime>("DtCreated");
 
                     b.Property<DateTime>("DtModified");
 
-                    b.Property<string>("Ingredients");
+                    b.Property<string>("Ingredients")
+                        .IsRequired();
 
                     b.Property<int>("LActive");
 
-                    b.Property<string>("PartyId");
+                    b.Property<string>("PartyId")
+                        .IsRequired();
 
                     b.Property<float>("Qty");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("PartyId");
 
                     b.ToTable("Menus");
                 });
@@ -296,17 +346,28 @@ namespace PartyCoinAPI.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Adres");
+                    b.Property<string>("Address")
+                        .IsRequired();
 
                     b.Property<int>("AgeRequired");
 
-                    b.Property<string>("CmpId");
+                    b.Property<string>("City")
+                        .IsRequired();
 
-                    b.Property<string>("CoordX");
+                    b.Property<Guid>("CmpId");
 
-                    b.Property<string>("CoordY");
+                    b.Property<Guid?>("CompanyId");
 
-                    b.Property<string>("Description");
+                    b.Property<string>("CoordX")
+                        .IsRequired();
+
+                    b.Property<string>("CoordY")
+                        .IsRequired();
+
+                    b.Property<string>("Country");
+
+                    b.Property<string>("Description")
+                        .IsRequired();
 
                     b.Property<DateTime>("DtCreated");
 
@@ -316,23 +377,32 @@ namespace PartyCoinAPI.Migrations
 
                     b.Property<int>("LActive");
 
-                    b.Property<string>("LineUp");
+                    b.Property<string>("LineUp")
+                        .IsRequired();
 
-                    b.Property<string>("Logo");
+                    b.Property<string>("Logo")
+                        .IsRequired();
 
                     b.Property<string>("LongDescription");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
                     b.Property<float>("Price");
 
-                    b.Property<string>("StatusId");
+                    b.Property<string>("Route");
+
+                    b.Property<string>("StatusId")
+                        .IsRequired();
 
                     b.Property<string>("Website");
 
-                    b.Property<string>("ZipCode");
+                    b.Property<string>("ZipCode")
+                        .IsRequired();
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CompanyId");
 
                     b.ToTable("Partys");
                 });
@@ -342,7 +412,9 @@ namespace PartyCoinAPI.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("CmpId");
+                    b.Property<Guid>("CmpId");
+
+                    b.Property<Guid?>("CompanyId");
 
                     b.Property<DateTime>("DtCreated");
 
@@ -350,9 +422,18 @@ namespace PartyCoinAPI.Migrations
 
                     b.Property<int>("LActive");
 
-                    b.Property<string>("Provider");
+                    b.Property<int>("PartyId");
+
+                    b.Property<string>("PartyId1");
+
+                    b.Property<string>("Provider")
+                        .IsRequired();
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CompanyId");
+
+                    b.HasIndex("PartyId1");
 
                     b.ToTable("PayMethods");
                 });
@@ -362,7 +443,7 @@ namespace PartyCoinAPI.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("CmpId");
+                    b.Property<Guid>("CmpId");
 
                     b.Property<DateTime>("DtCreated");
 
@@ -370,19 +451,49 @@ namespace PartyCoinAPI.Migrations
 
                     b.Property<int>("LActive");
 
-                    b.Property<string>("PartyId");
+                    b.Property<string>("PartyId")
+                        .IsRequired();
 
-                    b.Property<string>("PaymethodId");
+                    b.Property<string>("PaymethodId")
+                        .IsRequired();
 
                     b.Property<float>("Qty");
 
-                    b.Property<string>("UserId");
+                    b.Property<string>("UserId")
+                        .IsRequired();
 
-                    b.Property<string>("WalletId");
+                    b.Property<string>("WalletId")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
+                    b.HasIndex("WalletId");
+
                     b.ToTable("Transactions");
+                });
+
+            modelBuilder.Entity("PartyCoinAPI.Models.UserCoin", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CoinId");
+
+                    b.Property<string>("Qty")
+                        .IsRequired();
+
+                    b.Property<string>("UserId")
+                        .IsRequired();
+
+                    b.Property<int>("WalletId");
+
+                    b.Property<string>("WalletId1");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("WalletId1");
+
+                    b.ToTable("UserCoin");
                 });
 
             modelBuilder.Entity("PartyCoinAPI.Models.Wallet", b =>
@@ -396,26 +507,25 @@ namespace PartyCoinAPI.Migrations
 
                     b.Property<int>("LActive");
 
-                    b.Property<string>("PartyId");
-
-                    b.Property<float>("Qty");
-
-                    b.Property<string>("UserId");
+                    b.Property<string>("UserId")
+                        .IsRequired();
 
                     b.HasKey("Id");
 
                     b.ToTable("Wallets");
                 });
 
-            modelBuilder.Entity("PartyCoinAPI.Models.UserRoles", b =>
+            modelBuilder.Entity("PartyCoinAPI.Models.UserRole", b =>
                 {
                     b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityRole");
 
-                    b.Property<string>("CmpId");
+                    b.Property<Guid>("CmpId");
 
-                    b.ToTable("UserRoles");
+                    b.Property<int>("PartyId");
 
-                    b.HasDiscriminator().HasValue("UserRoles");
+                    b.ToTable("UserRole");
+
+                    b.HasDiscriminator().HasValue("UserRole");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -461,6 +571,69 @@ namespace PartyCoinAPI.Migrations
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("PartyCoinAPI.Models.ApplicationUser", b =>
+                {
+                    b.HasOne("PartyCoinAPI.Models.Company")
+                        .WithMany("Users")
+                        .HasForeignKey("CompanyId");
+                });
+
+            modelBuilder.Entity("PartyCoinAPI.Models.Currency", b =>
+                {
+                    b.HasOne("PartyCoinAPI.Models.Coin")
+                        .WithMany("Currencys")
+                        .HasForeignKey("CoinId");
+
+                    b.HasOne("PartyCoinAPI.Models.Company")
+                        .WithMany("Currenys")
+                        .HasForeignKey("CompanyId");
+
+                    b.HasOne("PartyCoinAPI.Models.Party")
+                        .WithMany("Currencyss")
+                        .HasForeignKey("PartyId");
+                });
+
+            modelBuilder.Entity("PartyCoinAPI.Models.Menu", b =>
+                {
+                    b.HasOne("PartyCoinAPI.Models.Party")
+                        .WithMany("Menus")
+                        .HasForeignKey("PartyId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("PartyCoinAPI.Models.Party", b =>
+                {
+                    b.HasOne("PartyCoinAPI.Models.Company")
+                        .WithMany("Partys")
+                        .HasForeignKey("CompanyId");
+                });
+
+            modelBuilder.Entity("PartyCoinAPI.Models.PayMethod", b =>
+                {
+                    b.HasOne("PartyCoinAPI.Models.Company")
+                        .WithMany("PayMethods")
+                        .HasForeignKey("CompanyId");
+
+                    b.HasOne("PartyCoinAPI.Models.Party")
+                        .WithMany("PayMethods")
+                        .HasForeignKey("PartyId1");
+                });
+
+            modelBuilder.Entity("PartyCoinAPI.Models.Transaction", b =>
+                {
+                    b.HasOne("PartyCoinAPI.Models.Wallet")
+                        .WithMany("Transactions")
+                        .HasForeignKey("WalletId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("PartyCoinAPI.Models.UserCoin", b =>
+                {
+                    b.HasOne("PartyCoinAPI.Models.Wallet")
+                        .WithMany("UserCoins")
+                        .HasForeignKey("WalletId1");
                 });
 #pragma warning restore 612, 618
         }

@@ -2,14 +2,14 @@ using System;
 
 namespace PartyCoinAPI.Models
 {
-    public  class ErrorViewModel<T>
+    public  class ErrorViewModel
     {
         public string RequestId { get; set; }
 
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
 
         // Check for valid models 
-        public bool IsValidModel(T model)
+        public bool IsValidMode<T>(T model)
         {
             Logging LogRec = new Logging();
 

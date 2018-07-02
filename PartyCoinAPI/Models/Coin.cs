@@ -12,34 +12,31 @@ namespace PartyCoinAPI.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         [Required]
-        public string Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
-        public string CmpId { get; set; }
+        public Guid PartyId { get; set; }
 
         [Required]
-        public string PartyId { get; set; }
-
-        [Required]
-        [Display(Name = "Age required")]
         public int AgeRequired { get; set; }
 
-        [Display(Name = "Logo coin")]
         public string Logo { get; set; }
 
-        [Display(Name = "Price")]
         [Required]       
         public float Price { get; set; }
 
+        [Required]
+        public List<Currency> Currencys {get;set;}
+
+        
         //Standard fields in model
         [Required]
-        [Display(Name = "Active")]
         public int LActive { get; set; }
+
         [DataType(DataType.DateTime)]
-        [Display(Name = "Date created")]
         public DateTime DtCreated { get; set; }
+
         [DataType(DataType.DateTime)]
-        [Display(Name = "Date modified")]
         public DateTime DtModified { get; set; }
 
     }

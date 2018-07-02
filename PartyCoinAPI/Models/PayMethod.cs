@@ -12,14 +12,22 @@ namespace PartyCoinAPI.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         [Required]
-        public string Id { get; set; }
+        public Guid Id { get; set; }
 
+        //[ForeignKey("CmpId")]
         [Required]
-        public string CmpId { get; set;} // in case of special paymethod methods(Empty guid = valid for all companys)
+        public Guid CmpId { get; set; }
 
+ 
         [Display(Name = "Provider")]
         [Required]
         public string Provider { get; set; }
+
+        //[ForeignKey("PartyId")]
+        [Required]
+        public Guid PartyId { get; set; }
+
+
 
         //Standard fields in model
         [Required]

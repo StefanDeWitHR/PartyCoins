@@ -50,13 +50,13 @@ namespace PartyCoinAPI.Controllers
             _context.SaveChanges();
         }
         [HttpPut("PutUser/{UserId}")]
-        public void PutUser(string UserId, [FromBody] ApplicationUser UserRec)
+        public void PutUser(Guid UserId, [FromBody] ApplicationUser UserRec)
         {
             _context.Users.Update(UserRec);
             _context.SaveChanges();
         }
         [HttpDelete("DeleteUser/{UserId}")]
-        public void DeleteUser(string UserId)
+        public void DeleteUser(Guid UserId)
         {
             //
         }

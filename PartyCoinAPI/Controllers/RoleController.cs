@@ -21,38 +21,38 @@ namespace PartyCoinAPI.Controllers
         [HttpGet("GetRoles")]
         public ActionResult GetRoles()
         {
-            List<UserRoles> UserRoleList = _context.AspNetRoles.ToList();
+            List<UserRole> UserRoleList = _context.AspNetRoles.ToList();
             return Ok(UserRoleList);
         }
         [HttpGet("GetRole/{UserRoleId}")]
         public ActionResult GetRole(string UserRoleId)
         {
-           UserRoles UserRoleRec = _context.AspNetRoles.Where(g => g.Id == UserRoleId).First();
+           UserRole UserRoleRec = _context.AspNetRoles.Where(g => g.Id == UserRoleId).First();
            return Ok(UserRoleRec); 
         }
         [HttpPost("PostRole")]
-        public void PostRole([FromBody] UserRoles UserRoleRec)
+        public void PostRole([FromBody] UserRole UserRoleRec)
         {
             _context.AspNetRoles.Add(UserRoleRec);
             _context.SaveChanges();
         }
         [HttpPost("PostRoles")]
-        public void PostRoles([FromBody] List<UserRoles> UserRoleList)
+        public void PostRoles([FromBody] List<UserRole> UserRoleList)
         {
-            foreach (UserRoles UserRoleRec in UserRoleList)
+            foreach (UserRole UserRoleRec in UserRoleList)
             {
                 _context.AspNetRoles.Add(UserRoleRec);
             }
             _context.SaveChanges();
         }
         [HttpPut("PutRole/{UserRoleId}")]
-        public void PutRole(string UserRoleId, [FromBody] UserRoles UserRoleRec)
+        public void PutRole(Guid UserRoleId, [FromBody] UserRole UserRoleRec)
         {
             _context.AspNetRoles.Update(UserRoleRec);
             _context.SaveChanges();
         }
         [HttpDelete("DeleteRole/{UserRoleId}")]
-        public void DeleteRole(string UserRoleId)
+        public void DeleteRole(Guid UserRoleId)
         {
             //
         }

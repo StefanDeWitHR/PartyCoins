@@ -12,13 +12,12 @@ namespace PartyCoinAPI.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         [Required]
-        public string Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
-        public string CmpId { get; set; }
-
+        public Guid CmpId { get; set; }
         [Required]
-        public string PartyId { get; set; }
+        public Guid PartyId { get; set; }
 
         [Display(Name = "Description")]
         [Required]

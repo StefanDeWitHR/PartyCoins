@@ -25,7 +25,7 @@ namespace PartyCoinAPI.Controllers
             return Ok(MenuList);
         }
         [HttpGet("GetMenu/{MenuId}")]
-        public ActionResult GetMenu(string MenuId)
+        public ActionResult GetMenu(Guid MenuId)
         {
             Menu MenuRec = _context.Menus.Where(m => m.Id== MenuId).First();
             return Ok(MenuRec);
@@ -46,13 +46,13 @@ namespace PartyCoinAPI.Controllers
             _context.SaveChanges();
         }
         [HttpPut("PutMenu/{MenuId}")]
-        public void PutMenu(string MenuId, [FromBody] Menu MenuRec)
+        public void PutMenu(Guid MenuId, [FromBody] Menu MenuRec)
         {
             _context.Menus.Update(MenuRec);
             _context.SaveChanges();
         }
         [HttpDelete("DeleteMenu/{MenuId}")]
-        public void DeleteMenu(string MenuId)
+        public void DeleteMenu(Guid MenuId)
         {
             //
         }

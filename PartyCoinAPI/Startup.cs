@@ -12,6 +12,7 @@ using PartyCoinAPI.Data;
 using PartyCoinAPI.Models;
 using PartyCoinAPI.Services;
 using Swashbuckle.AspNetCore.Swagger;
+using AutoMapper;
 
 namespace PartyCoinAPI
 {
@@ -50,7 +51,12 @@ namespace PartyCoinAPI
             // Add application services.
             services.AddTransient<IEmailSender, EmailSender>();
 
+
+            services.AddAutoMapper();
+            AutoMapperProfile autoMapper = new AutoMapperProfile();
             services.AddMvc();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

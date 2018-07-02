@@ -24,14 +24,14 @@ namespace PartyCoinAPI.Controllers
             List<Wallet> WalletList = _context.Wallets.ToList();
             return Ok(WalletList);
         }
-        [HttpGet("GetWallet/{PartyId}/{UserId}")]
-        public ActionResult GetWallet(string PartyId, string UserId)
+        [HttpGet("GetWallet/{UserId}")]
+        public ActionResult GetWallet( Guid UserId)
         {
-            Wallet WalletRec = _context.Wallets.Where(w => w.PartyId == PartyId && w.UserId == UserId).First();
+            Wallet WalletRec = _context.Wallets.Where(w => w.UserId  == UserId).First();
             return Ok(WalletRec);
         }
         [HttpGet("GetWalletsByUser/{UserId}")]
-        public ActionResult GetWalletsByUser(string UserId)
+        public ActionResult GetWalletsByUser(Guid UserId)
         {
             List<Wallet> WalletList = _context.Wallets.Where(w => w.UserId == UserId).ToList();
             return Ok(WalletList);

@@ -9,20 +9,20 @@ namespace PartyCoinAPI.Models
 {
     public class Wallet
     {
+        // Wallet 1 :  N UserCoin
+        // Wallet 1 :  1 User
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         [Required]
-        public string Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
-        public string UserId { get; set; }
+        public Guid UserId { get; set; }
 
-        [Required]
-        public string PartyId { get; set; } // One wallet for each party
+        public List<UserCoin> UserCoins { get; set; }
 
-        [Display(Name = "Amount of coins")]
-        [Required]
-        public float Qty {get;set;}
+        public List<Transaction> Transactions { get; set; }
+
 
         //Standard fields in model
         [Required]
