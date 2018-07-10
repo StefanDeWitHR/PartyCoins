@@ -23,9 +23,11 @@ namespace PartyCoinAPI.Controllers
             _mapper = mapper;
         }
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public IActionResult ManageCompany()
         {
-            return View();
+            List<Company>  Companies= _context.Companies.ToList();
+
+            return View("Views/Manage/Company/ManageCompany.cshtml", Companies);
         }
 
 

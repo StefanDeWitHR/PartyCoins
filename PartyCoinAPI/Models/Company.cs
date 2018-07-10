@@ -41,7 +41,7 @@ namespace PartyCoinAPI.Models
 
         [Display(Name = "Address")]
         [Required]
-        public string Addresss { get; set; }
+        public string Address { get; set; }
 
         [Display(Name= "City")]
         [Required]

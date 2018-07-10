@@ -221,9 +221,10 @@ namespace PartyCoinAPI.Controllers
             if (ModelState.IsValid)
             {
                 DateTime dt_created = DateTime.Now;
-                DateTime dt_Birth = model.dt_birth;
 
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, DtBirth = dt_Birth, UserRoleId= "", LActive = 1, CmpId = Guid.Empty };
+                //DateTime dt_Birth = model.dt_birth;
+
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, UserRoleId = "", LActive = 1, CmpId = Guid.Empty, WalletId = Guid.NewGuid(), UserId = Guid.NewGuid()  };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

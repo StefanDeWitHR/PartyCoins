@@ -22,3 +22,15 @@ C:\Users\super\OneDrive\Documenten\GitHub\PartyCoins\PartyCoinAPI\obj\Debug\netc
 C:\Users\super\OneDrive\Documenten\GitHub\PartyCoins\PartyCoinAPI\obj\Debug\netcoreapp2.0\PartyCoinAPI.dll
 C:\Users\super\OneDrive\Documenten\GitHub\PartyCoins\PartyCoinAPI\obj\Debug\netcoreapp2.0\PartyCoinAPI.pdb
 C:\Users\super\OneDrive\Documenten\GitHub\PartyCoins\PartyCoinAPI\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\erwin\Documents\GitHub\temp\PartyCoins\PartyCoinAPI\obj\Debug\netcoreapp2.0\PartyCoinAPI.csprojAssemblyReference.cache
+C:\Users\erwin\Documents\GitHub\temp\PartyCoins\PartyCoinAPI\obj\Debug\netcoreapp2.0\PartyCoinAPI.csproj.CoreCompileInputs.cache
+C:\Users\erwin\Documents\GitHub\temp\PartyCoins\PartyCoinAPI\obj\Debug\netcoreapp2.0\UserSecretsAssemblyInfo.cs
+C:\Users\erwin\Documents\GitHub\temp\PartyCoins\PartyCoinAPI\obj\Debug\netcoreapp2.0\PartyCoinAPI.AssemblyInfoInputs.cache
+C:\Users\erwin\Documents\GitHub\temp\PartyCoins\PartyCoinAPI\obj\Debug\netcoreapp2.0\PartyCoinAPI.AssemblyInfo.cs
+C:\Users\erwin\Documents\GitHub\temp\PartyCoins\PartyCoinAPI\obj\Debug\netcoreapp2.0\PartyCoinAPI.dll
+C:\Users\erwin\Documents\GitHub\temp\PartyCoins\PartyCoinAPI\obj\Debug\netcoreapp2.0\PartyCoinAPI.pdb
+C:\Users\erwin\Documents\GitHub\temp\PartyCoins\PartyCoinAPI\bin\Debug\netcoreapp2.0\PartyCoinAPI.deps.json
+C:\Users\erwin\Documents\GitHub\temp\PartyCoins\PartyCoinAPI\bin\Debug\netcoreapp2.0\PartyCoinAPI.runtimeconfig.json
+C:\Users\erwin\Documents\GitHub\temp\PartyCoins\PartyCoinAPI\bin\Debug\netcoreapp2.0\PartyCoinAPI.runtimeconfig.dev.json
+C:\Users\erwin\Documents\GitHub\temp\PartyCoins\PartyCoinAPI\bin\Debug\netcoreapp2.0\PartyCoinAPI.dll
+C:\Users\erwin\Documents\GitHub\temp\PartyCoins\PartyCoinAPI\bin\Debug\netcoreapp2.0\PartyCoinAPI.pdb
