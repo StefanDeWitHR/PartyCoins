@@ -68,7 +68,10 @@ namespace PartyCoinAPI.Models.DTO
         [Display(Name = "Date modified")]
         public DateTime DtModified { get; set; }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5c9d29077e4fd9662cab9f7e32e5aa418ac83232
     }
 }
 
