@@ -68,16 +68,7 @@ namespace PartyCoinAPI.Models.DTO
         [Display(Name = "Date modified")]
         public DateTime DtModified { get; set; }
 
-        //Standard fields in model
-        [Required]
-        [Display(Name = "Active")]
-        public int LActive { get; set; }
-        [DataType(DataType.DateTime)]
-        [Display(Name = "Date created")]
-        public DateTime DtCreated { get; set; }
-        [DataType(DataType.DateTime)]
-        [Display(Name = "Date modified")]
-        public DateTime DtModified { get; set; }
+
     }
 }
 
